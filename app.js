@@ -55,7 +55,7 @@ app.use(mongoSanitize({
 //sesion secret
 const secret = process.env.SECRET || 'thiswillbeaseacret';
 //session storage
-const store = new MongoDBStore({
+const store = MongoDBStore.create({
     url: dbUrl,
     secret,
     touchAfter: 24 * 60 * 60,
