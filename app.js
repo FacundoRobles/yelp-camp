@@ -56,9 +56,11 @@ app.use(mongoSanitize({
 const secret = process.env.SECRET || 'thiswillbeaseacret';
 //session storage
 const store = MongoStore.create({
-    url: dbUrl,
-    secret,
+    mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret,
+    }
 });
 
 store.on('error', function(e){
